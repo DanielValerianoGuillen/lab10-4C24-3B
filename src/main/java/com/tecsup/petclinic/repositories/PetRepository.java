@@ -13,8 +13,7 @@ import com.tecsup.petclinic.entities.Pet;
  *
  */
 @Repository
-public interface PetRepository 
-	extends CrudRepository<Pet, Long> {
+public interface PetRepository extends CrudRepository<Pet, Long> {
 
 	// Fetch pets by name
 	List<Pet> findByName(String name);
