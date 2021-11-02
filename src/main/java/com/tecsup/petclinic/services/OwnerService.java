@@ -7,29 +7,45 @@ import com.tecsup.petclinic.exception.OwnerNotFoundException;
 
 public interface OwnerService {
 
+	/**
+	 * 
+	 * @param owner
+	 * @return
+	 */
+	Owner create(Owner owner);
 
-    Owner create(Owner owner);
+	/**
+	 * 
+	 * @param owner
+	 * @return
+	 */
+	Owner update(Owner owner);
 
-    Owner update(Owner owner);
+	/**
+	 * 
+	 * @param id
+	 * @throws OwnerNotFoundException
+	 */
+	void delete(Long id) throws OwnerNotFoundException;
 
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Owner findById(long id) throws OwnerNotFoundException;
 
-    void delete(Long id) throws OwnerNotFoundException;
+	/**
+	 * 
+	 * @param first_name
+	 * @return
+	 */
+	List<Owner> findByFirstName(String first_name);
 
-
-    Owner findById(long id) throws OwnerNotFoundException;
-
-
-    List<Owner> findByFirstName(String first_name);
-
-    List<Owner> findByLastName(String last_name);
-
-    List<Owner> findByAddress(String address);
-
-    List<Owner> findByCity(String city);
-
-    List<Owner> findByTelephone(String telephone);
-
-
-    Iterable<Owner> findAll();
-
+	/**
+	 * 
+	 * @return
+	 */
+	Iterable<Owner> findAll();
+    
 }

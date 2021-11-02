@@ -1,4 +1,4 @@
-package com.tecsup.petclinic.service;
+package com.tecsup.petclinic.services;
 
 
 import static org.hamcrest.CoreMatchers.is;
@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.tecsup.petclinic.entities.Pet;
 import com.tecsup.petclinic.exception.PetNotFoundException;
-import com.tecsup.petclinic.services.PetService;
 
 @SpringBootTest
 public class PetServiceTest {
@@ -28,7 +27,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
-	
+	@Test
 	public void testFindPetById() {
 
 		long ID = 1;
@@ -51,7 +50,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
-	
+	@Test
 	public void testFindPetByName() {
 
 		String FIND_NAME = "Leo";
@@ -65,7 +64,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
-	
+	@Test
 	public void testFindPetByTypeId() {
 
 		int TYPE_ID = 5;
@@ -79,7 +78,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
-	
+	@Test
 	public void testFindPetByOwnerId() {
 
 		int OWNER_ID = 10;
@@ -99,7 +98,7 @@ public class PetServiceTest {
 	 */
 	
 	
-		
+		@Test
 	    public void testCreatePet() {
 	        String PET_NAME = "Ponky";
 	        int OWNER_ID = 1;
@@ -119,6 +118,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
+	@Test
 	public void testUpdatePet() {
 
 		String PET_NAME = "Bear";
