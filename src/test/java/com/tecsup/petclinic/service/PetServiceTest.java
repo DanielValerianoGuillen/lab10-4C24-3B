@@ -13,8 +13,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.tecsup.petclinic.domain.Pet;
+import com.tecsup.petclinic.entities.Pet;
 import com.tecsup.petclinic.exception.PetNotFoundException;
+import com.tecsup.petclinic.services.PetService;
 
 @SpringBootTest
 public class PetServiceTest {
@@ -27,7 +28,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
-	@Test
+	
 	public void testFindPetById() {
 
 		long ID = 1;
@@ -50,7 +51,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
-	@Test
+	
 	public void testFindPetByName() {
 
 		String FIND_NAME = "Leo";
@@ -64,7 +65,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
-	@Test
+	
 	public void testFindPetByTypeId() {
 
 		int TYPE_ID = 5;
@@ -78,7 +79,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
-	@Test
+	
 	public void testFindPetByOwnerId() {
 
 		int OWNER_ID = 10;
@@ -96,28 +97,28 @@ public class PetServiceTest {
 	 *  entity this annotation :
 	 *  	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	 */
-	@Test
-	public void testCreatePet() {
-
-		String PET_NAME = "Ponky";
-		int OWNER_ID = 1;
-		int TYPE_ID = 1;
-
-		Pet pet = new Pet(PET_NAME, 1, 1);
-		pet = petService.create(pet);
-		logger.info("" + pet);
-
-		assertThat(pet.getId(), notNullValue());
-		assertThat(PET_NAME, is(pet.getName()));
-		assertThat(OWNER_ID, is(pet.getOwnerId()));
-		assertThat(TYPE_ID,is(pet.getTypeId()));
-
-	}
+	
+	
+		
+	    public void testCreatePet() {
+	        String PET_NAME = "Ponky";
+	        int OWNER_ID = 1;
+	        int TYPE_ID = 1;
+	        Pet pet = new Pet(PET_NAME, 1, 1);
+	        
+	        Pet petCreated = petService.create(pet);
+	        
+	        logger.info("PET:" + pet);
+	        //          ACTUAL                 , EXPECTED 
+	        assertThat(petCreated.getId()      , notNullValue());
+	        assertThat(petCreated.getName()    , is(PET_NAME));
+	        assertThat(petCreated.getOwnerId() , is(OWNER_ID));
+	        assertThat(petCreated.getTypeId()  , is(TYPE_ID));
+	    }
 
 	/**
 	 * 
 	 */
-	@Test
 	public void testUpdatePet() {
 
 		String PET_NAME = "Bear";
@@ -183,3 +184,6 @@ public class PetServiceTest {
 
 	}
 }
+
+
+

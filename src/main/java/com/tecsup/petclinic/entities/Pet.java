@@ -1,4 +1,4 @@
-package com.tecsup.petclinic.domain;
+package com.tecsup.petclinic.entities;
 
 import java.sql.Date;
 
@@ -8,11 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * 
- * @author jgomezm
- *
- */
+
 @Entity(name = "pets")
 public class Pet {
 
