@@ -2,6 +2,7 @@ package com.tecsup.petclinic.service;
 
 
 import static org.hamcrest.CoreMatchers.is;
+
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -13,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.tecsup.petclinic.domain.Pet;
+import com.tecsup.petclinic.service.Pet;
 import com.tecsup.petclinic.exception.PetNotFoundException;
 
 @SpringBootTest
