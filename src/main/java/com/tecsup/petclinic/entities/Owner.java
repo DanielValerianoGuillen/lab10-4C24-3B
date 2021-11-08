@@ -113,7 +113,7 @@ public class Owner {
 
 	@Override
 	public String toString() {
-		return "Pet [id=" + id + ", first_name=" + firstName + ", last_name=" + lastName + ", "
+		return "Owner [id=" + id + ", first_name=" + firstName + ", last_name=" + lastName + ", "
 				+ "address=" + address + ", city= "+ city + ", telephone=" + telephone + "]";
 	}
 

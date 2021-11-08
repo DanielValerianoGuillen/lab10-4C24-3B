@@ -3,6 +3,9 @@
 	<name>PetClinic</name>
 	<comment></comment>
 	<projects>
+		<project>lab10_junit</project>
+		<project>producto</project>
+		<project>Publicaciones</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

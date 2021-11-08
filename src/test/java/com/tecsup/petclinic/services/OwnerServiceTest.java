@@ -22,7 +22,8 @@ public class OwnerServiceTest {
 	@Autowired
 	private OwnerService ownerService;
 
-	@Test
+	
+	
 	public void testFindOwnerById() {
 
 		long ID = 1;
@@ -41,7 +42,7 @@ public class OwnerServiceTest {
 
 	}
 
-	@Test
+	
 	public void testCreateOwner() {
 
 		 String FIRST_NAME = "Maria";
@@ -54,7 +55,6 @@ public class OwnerServiceTest {
 		Owner ownerCreated = ownerService.create(owner);
 		logger.info("OWNER CREATED: " + ownerCreated);
 
-		// ACTUAL , EXPECTED
 		assertThat(ownerCreated.getId(), notNullValue());
 		assertThat(ownerCreated.getFirstName(), is(FIRST_NAME));
 		assertThat(ownerCreated.getLastName(), is(LAST_NAME));
@@ -64,9 +64,8 @@ public class OwnerServiceTest {
 	}
 
 	
-	 @Test 
+		
 	 public void testUpdateOwner() {
-	 
 		 String FIRST_NAME = "Maria";
 		 String LAST_NAME = "Escobito";
 		 String ADDRESS = "345 Maple St.";
@@ -81,26 +80,17 @@ public class OwnerServiceTest {
 		 String UP_PHONE = "6085555487";
 		 
 		 Owner owner = new Owner(FIRST_NAME, LAST_NAME, ADDRESS, CITY, PHONE);
-		 
-		 // Create record 
 		 logger.info(">" + owner); 
 		 Owner ownerCreated = ownerService.create(owner); 
 		 logger.info(">>" + ownerCreated);
-		 
 		 create_id = ownerCreated.getId();
-		 
-		 // Prepare data for update 
 		 ownerCreated.setFirstName(UP_FIRST_NAME);
 		 ownerCreated.setLastName(UP_LAST_NAME); 
 		 ownerCreated.setAddress(UP_ADDRESS);
 		 ownerCreated.setCity(UP_CITY);
 		 ownerCreated.setTelephone(UP_PHONE);
-		 
-		 // Execute update 
 		 Owner upgradeOwner = ownerService.update(ownerCreated);
-		 logger.info(">>>>" + upgradeOwner);
-		 
-		 // ACTUAL EXPECTED
+		 logger.info(">" + upgradeOwner);
 		 assertThat(create_id ,notNullValue());
 		 assertThat(upgradeOwner.getId(), is(create_id));
 		 assertThat(upgradeOwner.getFirstName(), is(UP_FIRST_NAME));
@@ -112,8 +102,10 @@ public class OwnerServiceTest {
 	 /**
 		 * 
 		 */
-	 @Test
-		public void testDeletePet() {
+	 
+	 
+	 	@Test
+		public void testDeleteOwner() {
 	
 		 String FIRST_NAME = "Maria";
 		 String LAST_NAME = "Escobito";
@@ -130,7 +122,6 @@ public class OwnerServiceTest {
 			} catch (OwnerNotFoundException e) {
 				assertThat(e.getMessage(), false);
 			}
-				
 			try {
 				ownerService.findById(owner.getId());
 				assertThat(true, is(false));
