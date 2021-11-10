@@ -12,8 +12,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,14 +26,14 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 import com.tecsup.petclinic.dto.OwnerDTO;
-
-import com.tecsup.petclinic.exception.OwnerNotFoundException;
-
-
+/**
+ * 
+ */
 @AutoConfigureMockMvc
 @SpringBootTest
 public class OwnerControllerTest {
-	private static final Logger logger = LoggerFactory.getLogger(OwnerNotFoundException.class);
+	private static final Logger logger 
+	= LoggerFactory.getLogger(OwnerControllerTest.class);
 
 	private static final ObjectMapper om = new ObjectMapper();
 	
@@ -43,13 +41,12 @@ public class OwnerControllerTest {
 	private MockMvc mockMvc;
 	
 	@Test
-	
 	public void testGetOwners() throws Exception{
-		int ID_FIRST =2;
-		this.mockMvc.perform(get("/owners/"))
+		int ID =1;
+		this.mockMvc.perform(get("/owners"))
 					.andExpect(status().isOk())
 					.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-					.andExpect(jsonPath("$[0].id",is(ID_FIRST)));
+					.andExpect(jsonPath("$[0].id", is(ID)));
 	}
 	
 	/**
@@ -59,18 +56,19 @@ public class OwnerControllerTest {
 	
 	@Test
 	public void testFindOwnerOk()  throws Exception{
-			int ID_FIRST =1;
-		 String FIRST_NAME = "Maria";
-		 String LAST_NAME = "Escobito";
-		 String ADDRESS = "345 Maple St.";
-		 String CITY = "Madison";
-		 String PHONE = "6085557683";
+		 int ID_SEARCH =7;
+		 String FIRST_NAME = "Jeff";
+		 String LAST_NAME = "Black";
+		 String ADDRESS = "1450 Oak Blvd.";
+		 String CITY = "Monona";
+		 String PHONE = "6085555387";
 		 
 		 
-			mockMvc.perform(get("/owners/" + ID_FIRST))  // Finding object with ID = 1
+			mockMvc.perform(get("/owners/" + ID_SEARCH))  // Finding object with ID = 1
 			.andExpect(content().contentType(MediaType.APPLICATION_JSON))
 			//.andDo(print())
 			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.id" ,is(7)))
 			.andExpect(jsonPath("$.firstName", is(FIRST_NAME)))
 			.andExpect(jsonPath("$.lastName", is(LAST_NAME)))
 			.andExpect(jsonPath("$.address", is(ADDRESS)))
@@ -86,9 +84,7 @@ public class OwnerControllerTest {
 	@Test
 	public void testFindOwnerKO() throws Exception {
 
-		int ID_FIRST = 15;
-
-		
+		int ID_FIRST = 7;
 		mockMvc.perform(get("/owners" + ID_FIRST)) // Finding object with ID = 666
 				.andExpect(status().isNotFound());
 
@@ -100,11 +96,12 @@ public class OwnerControllerTest {
 	
 	@Test
     public void testCreateOwner() throws Exception {
-		 String FIRST_NAME = "Maria";
-		 String LAST_NAME = "Escobito";
-		 String ADDRESS = "345 Maple St.";
-		 String CITY = "Madison";
-		 String PHONE = "6085557683";
+		 
+		 String FIRST_NAME = "Eduardo";
+		 String LAST_NAME = "Rodriquez";
+		 String ADDRESS = "2693 Commerce St.";
+		 String CITY = "McFarland";
+		 String PHONE = "6085558763";
 
 		OwnerDTO newOwner = new OwnerDTO(FIRST_NAME, LAST_NAME, ADDRESS, CITY, PHONE);
 
@@ -133,14 +130,13 @@ public class OwnerControllerTest {
      */
     @Test
     public void testDeleteOwner() throws Exception {
-
     	 String FIRST_NAME = "Maria";
 		 String LAST_NAME = "Escobito";
 		 String ADDRESS = "345 Maple St.";
 		 String CITY = "Madison";
 		 String PHONE = "6085557683";
 		
-		 OwnerDTO newOwner = new OwnerDTO(FIRST_NAME, LAST_NAME, ADDRESS, CITY, PHONE);
+		 OwnerDTO newOwner = new OwnerDTO( FIRST_NAME, LAST_NAME, ADDRESS, CITY, PHONE);
 		
 		ResultActions mvcActions = mockMvc.perform(post("/owners")
 	            .content(om.writeValueAsString(newOwner))

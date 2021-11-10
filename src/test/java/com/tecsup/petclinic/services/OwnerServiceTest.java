@@ -23,7 +23,7 @@ public class OwnerServiceTest {
 	private OwnerService ownerService;
 
 	
-	
+	@Test
 	public void testFindOwnerById() {
 
 		long ID = 1;
@@ -42,7 +42,7 @@ public class OwnerServiceTest {
 
 	}
 
-	
+	@Test
 	public void testCreateOwner() {
 
 		 String FIRST_NAME = "Maria";
@@ -64,7 +64,7 @@ public class OwnerServiceTest {
 	}
 
 	
-		
+	@Test
 	 public void testUpdateOwner() {
 		 String FIRST_NAME = "Maria";
 		 String LAST_NAME = "Escobito";

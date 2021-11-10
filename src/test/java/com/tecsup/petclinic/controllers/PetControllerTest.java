@@ -35,12 +35,11 @@ import com.tecsup.petclinic.dto.PetDTO;
 @SpringBootTest
 public class PetControllerTest {
 
-	private static final Logger logger 
-			= LoggerFactory.getLogger(PetControllerTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(PetControllerTest.class);
 
     private static final ObjectMapper om = new ObjectMapper();
     
-	@Autowired
+    @Autowired
 	private MockMvc mockMvc;
 	
 	@Test

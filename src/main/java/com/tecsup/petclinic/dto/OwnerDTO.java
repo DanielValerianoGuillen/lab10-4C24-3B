@@ -8,7 +8,9 @@ public class OwnerDTO {
 	private String city;
 	private String telephone;
 
-	public OwnerDTO(String firstName, String lastName, String address, String city, String telephone) {
+
+	
+	public OwnerDTO( String firstName, String lastName, String address, String city, String telephone) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -29,16 +31,16 @@ public class OwnerDTO {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstName(String first_name) {
+		this.firstName = first_name;
 	}
 
 	public String getLastName() {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastName(String last_name) {
+		this.lastName = last_name;
 	}
 
 	public String getAddress() {
